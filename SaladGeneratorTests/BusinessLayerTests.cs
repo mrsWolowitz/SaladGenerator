@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Linq;
 using SaladGenerator.Model;
 
 namespace SaladGeneratorTests
@@ -8,53 +9,86 @@ namespace SaladGeneratorTests
     [TestClass]
     public class BusinessLayerTests
     {
-        [TestMethod]
-        public void Recipe_from_6_ingredients()
+        public List<Ingredient> Ingredients { set; get; }
+
+        [TestInitialize]
+        public void TestInitialize()
         {
-            //arrange
-            int ingredientsCount = 6;
-            List<Ingredient> ingredients = new List<Ingredient>();
+            Ingredients = new List<Ingredient>();
 
             Ingredient ingr1 = new Ingredient();
             ingr1.Name = "Айсберг";
             ingr1.Type = IngredientTypes.BaseGreen;
-            ingredients.Add(ingr1);
-
-            Ingredient ingr11 = new Ingredient();
-            ingr11.Name = "Шпинат";
-            ingr11.Type = IngredientTypes.BaseGreen;
-            ingredients.Add(ingr11);
+            Ingredients.Add(ingr1);
 
             Ingredient ingr2 = new Ingredient();
             ingr2.Name = "Оливковое масло + сок лайма + сахар";
             ingr2.Type = IngredientTypes.Dressing;
-            ingredients.Add(ingr2);
+            Ingredients.Add(ingr2);
 
             Ingredient ingr3 = new Ingredient();
             ingr3.Name = "Базилик";
             ingr3.Type = IngredientTypes.Green;
-            ingredients.Add(ingr3);
+            Ingredients.Add(ingr3);
 
             Ingredient ingr4 = new Ingredient();
             ingr4.Name = "Красная рыба";
             ingr4.Type = IngredientTypes.Protein;
-            ingredients.Add(ingr4);
+            Ingredients.Add(ingr4);
 
             Ingredient ingr5 = new Ingredient();
             ingr5.Name = "Кунжут";
             ingr5.Type = IngredientTypes.Topping;
-            ingredients.Add(ingr5);
+            Ingredients.Add(ingr5);
 
             Ingredient ingr6 = new Ingredient();
             ingr6.Name = "Авокадо";
             ingr6.Type = IngredientTypes.Vegetable;
-            ingredients.Add(ingr6);
+            Ingredients .Add(ingr6);
+        }
+
+        [TestMethod]
+        public void Output_Count_ingredients()
+        {
+            //arrange
+            int ingredientsCount = Ingredients.Count;
+
+            Ingredient ingr = new Ingredient();
+            ingr.Name = "Шпинат";
+            ingr.Type = IngredientTypes.BaseGreen;
+            Ingredients.Add(ingr);            
 
             //act
-            Recipe recipe = new Recipe(ingredients);
+            Recipe recipe = new Recipe(Ingredients);
+            
             //assert
-
             Assert.AreEqual(ingredientsCount, recipe.Ingredients.Count);
+        }
+
+        [TestMethod]
+        public void Print()
+        { 
+            //arrange
+            string recipeText = "Рецепт салата:"
+                + Environment.NewLine
+                + "Айсберг"
+                + Environment.NewLine
+                + "Красная рыба"
+                + Environment.NewLine
+                + "Авокадо"
+                + Environment.NewLine
+                + "Кунжут" 
+                + Environment.NewLine
+                + "Базилик" 
+                + Environment.NewLine
+                + "Оливковое масло + сок лайма + сахар";
+
+            //act
+            Recipe recipe = new Recipe(Ingredients);
+            string result = recipe.Print();
+
+            //assert
+            Assert.AreEqual(recipeText, result);
         }
     }
 }

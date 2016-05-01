@@ -17,6 +17,11 @@ namespace SaladGenerator.Model
         /// Тип ингредиента
         /// </summary>
         public IngredientTypes Type { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
         
     }
 }
