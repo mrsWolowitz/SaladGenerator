@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace SaladGenerator.Model
 {
-    class Ingredient
+    public class Ingredient
     {
         /// <summary>
-        /// Наименование ингридиента
+        /// Наименование ингредиента
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Тип ингридиента
+        /// Тип ингредиента
         /// </summary>
         public IngredientTypes Type { get; set; }
         

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SaladGenerator.Model
 {
-    class Recipe
+    public class Recipe
     {
         /// <summary>
         /// Список ингредиентов
@@ -17,6 +17,11 @@ namespace SaladGenerator.Model
         {
             Ingredients = new List<Ingredient>();
 
+            foreach (IngredientTypes suit in Enum.GetValues(typeof(IngredientTypes)))
+            {
+                var vv = (from i in ingredients where i.Type == suit select i).First();
+                Ingredients.Add((Ingredient)vv);
+            }
         }
     }
 }

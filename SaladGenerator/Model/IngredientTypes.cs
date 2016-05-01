@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SaladGenerator.Model
 {
-    enum IngredientTypes
+    public enum IngredientTypes
     {
         BaseGreen,
         Protein,
