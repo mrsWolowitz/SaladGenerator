@@ -8,6 +8,8 @@ namespace SaladGenerator.Model
 {
     public class Ingredient
     {
+        public int Id { get; set; }
+
         /// <summary>
         /// Наименование ингредиента
         /// </summary>
