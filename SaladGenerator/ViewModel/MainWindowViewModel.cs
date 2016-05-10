@@ -25,7 +25,8 @@ namespace SaladGenerator.ViewModel
 
         IngredientContext ctx = new IngredientContext();
 
-        public List<Ingredient> Ingredients { get; set; }
+        public List<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
+        public List<IngredientTypes> Types { get; set; } = new List<IngredientTypes>();
         public ICommand ClickCommand { get; set; }
         public string NewName { get; set; }
         public IngredientTypes NewType { get; set; }
@@ -34,6 +35,7 @@ namespace SaladGenerator.ViewModel
         {
             ClickCommand = new RelayCommand(arg => _AddIngredient());
             _FillIngredients();
+            _FillTypes();
         }
 
         private void _AddIngredient()
@@ -47,6 +49,13 @@ namespace SaladGenerator.ViewModel
             var q = (from a in ctx.Ingredients
                      select a).ToList();
             this.Ingredients = q;
+        }
+
+        private void _FillTypes()
+        {
+            var q = Enum.GetValues(typeof(IngredientTypes));
+            foreach(IngredientTypes i in q)
+            this.Types.Add(i);
         }
     }
 }

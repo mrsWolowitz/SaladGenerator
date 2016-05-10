@@ -17,11 +17,11 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding Path=Ingredients, Mode=TwoWay}" CanUserAddRows="False"/>
+        <DataGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding Path=Ingredients}" CanUserAddRows="False"/>
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Наименование" TextAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="1" Grid.Column="1" Text="Тип ингредиента" TextAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Row="2" Grid.Column="0" Margin="2" Text="{Binding Path=NewName}"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="2" Text="{Binding Path=NewType}"/>
+        <ComboBox Grid.Row="2" Grid.Column="1" Margin="2" SelectedItem="{Binding Path=NewType}" ItemsSource="{Binding Path=Types}"/>
         <Button Grid.Row="2" Grid.Column="2" Margin="2" Content="Добавить запись" Command="{Binding ClickCommand}"/>
     </Grid>
 </Window>
