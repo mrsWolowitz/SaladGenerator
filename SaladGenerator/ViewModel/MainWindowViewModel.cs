@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using SaladGenerator.DB;
 using SaladGenerator.Model;
 using System.Windows.Input;
+using System.Collections.ObjectModel;
 
 namespace SaladGenerator.ViewModel
 {
@@ -42,6 +43,7 @@ namespace SaladGenerator.ViewModel
         {
             ctx.Ingredients.Add(new Ingredient { Name = NewName, Type = NewType});
             ctx.SaveChanges();
+            NotifyPropertyChanged();
         }
 
         private void _FillIngredients()
