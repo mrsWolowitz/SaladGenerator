@@ -12,7 +12,7 @@ using System.Collections.ObjectModel;
 
 namespace SaladGenerator.ViewModel
 {
-    class MainWindowViewModel : INotifyPropertyChanged
+    class IngredientsWindowViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -32,7 +32,7 @@ namespace SaladGenerator.ViewModel
         public string NewName { get; set; }
         public IngredientTypes NewType { get; set; }
 
-        public MainWindowViewModel()
+        public IngredientsWindowViewModel()
         {
             ClickCommand = new RelayCommand(arg => _AddIngredient());
             _FillIngredients();

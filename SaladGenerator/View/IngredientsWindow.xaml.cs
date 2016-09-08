@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SaladGenerator.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for IngredientsWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class IngredientsWindow : Window
     {
-        public MainWindow()
+        public IngredientsWindow()
         {
             InitializeComponent();
         }
